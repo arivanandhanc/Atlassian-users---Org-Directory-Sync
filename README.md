@@ -194,11 +194,3 @@ Okta offers a first-party SCIM connector for Atlassian. It's the right choice fo
 - Rotate your Slack webhook URL if it is ever exposed
 
 ---
-
-## License
-
-MIT
-
----
-
-## Sample Sync Output
