@@ -171,4 +171,34 @@ POST /test/user-deleted      { "email": "user@your-org.com" }
 
 ---
 
+## Why Not Use Okta's Native Atlassian Connector?
+
+Okta offers a first-party SCIM connector for Atlassian. It's the right choice for large enterprises already on a premium Okta tier. For mid-size teams it often isn't:
+
+| | Native Okta Connector | This Build |
+|--|----------------------|-----------|
+| Cost | Requires Okta Identity Governance tier (~$6–12/user/month) | Server hosting only (~$5–20/month) |
+| JSM control | No service desk or group targeting | Full JSM group + customer provisioning |
+| Profile filtering | Not supported | Filter by any Okta profile field |
+| Observability | Limited | Slack alerts + Run ID per execution |
+| Best for | 500+ users, enterprise Okta | 50–500 users, mid-size companies |
+
+---
+
+## Security Notes
+
+- Never commit `.env` — it is gitignored
+- `SYNC_API_KEY` must be at least 32 characters (validated at startup)
+- API key comparison uses `crypto.timingSafeEqual` to prevent timing attacks
+- Test endpoints are protected by JWT with 1h expiry
+- Rotate your Slack webhook URL if it is ever exposed
+
+---
+
+## License
+
+MIT
+
+---
+
 ## Sample Sync Output
